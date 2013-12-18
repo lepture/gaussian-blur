@@ -1,0 +1,13 @@
+{
+  "name": "gaussian-blur",
+  "repo": "lepture/gaussian-blur",
+  "description": "Gaussian blur effect for images.",
+  "version": "0.1.0",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ]
+}
