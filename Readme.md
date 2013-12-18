@@ -37,6 +37,10 @@ var svg = gaussian(img)
 svg.deviation(2)
 ```
 
+## Thanks
+
+This project is totally inspired by [jQuery Gaussian Blur](https://github.com/finom/jQuery-Gaussian-Blur).
+
 ## License
 
 MIT
