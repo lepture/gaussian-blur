@@ -244,7 +244,9 @@ module.exports = function(img, deviation) {
       img.style.filter = 'progid:DXImageTransform.Microsoft.Blur(pixelradius=' + num*2 + ')';
     };
     func(deviation);
-    return {deviation: func, svg: false};
+    img.svg = false;
+    img.deviation = func;
+    return img;
   }
 
   var blurId = Math.random();
