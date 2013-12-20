@@ -8,8 +8,7 @@
 
 // Sepcial Thanks to https://github.com/finom/jQuery-Gaussian-Blur
 
-var ua = navigator.userAgent;
-var insane = ~ua.indexOf('MSIE 6') || ~ua.indexOf('MSIE 7') || ~ua.indexOf('MSIE 8');
+var insane = /\bMSIE [678]\.0\b/.test(navigator.userAgent);
 
 var ns = 'http://www.w3.org/2000/svg';
 
