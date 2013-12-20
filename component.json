@@ -5,7 +5,9 @@
   "version": "0.1.0",
   "keywords": [],
   "dependencies": {},
-  "development": {},
+  "development": {
+    "visionmedia/mocha": "*"
+  },
   "license": "MIT",
   "scripts": [
     "index.js"
