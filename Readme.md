@@ -1,7 +1,9 @@
-
 # gaussian-blur
 
 Gaussian blur effect for images.
+
+[![Build Status](https://travis-ci.org/lepture/gaussian-blur.png?branch=master)](https://travis-ci.org/lepture/gaussian-blur)
+[![Coverage Status](https://coveralls.io/repos/lepture/gaussian-blur/badge.png)](https://coveralls.io/r/lepture/gaussian-blur)
 
 ## Installation
 

@@ -13,3 +13,6 @@ after_success:
   - npm install jscoverage coveralls -g
   - make prepare-coverage
   - mocha-browser test/index.html -R lcov | coveralls
+
+notifications:
+  email: false
