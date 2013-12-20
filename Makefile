@@ -21,11 +21,13 @@ gh-pages: components
 test: build
 	@mocha-browser test/index.html
 
-coverage:
+prepare-coverage:
 	@jscoverage index.js cov.js
 	@mv index.js bak.js
 	@mv cov.js index.js
 	@$(MAKE) build
+
+coverage: prepare-coverage
 	@mocha-browser test/index.html -R html-cov > coverage.html
 	@mv bak.js index.js
 
