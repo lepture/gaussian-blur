@@ -26,9 +26,9 @@ prepare-coverage:
 	@mv index.js bak.js
 	@mv cov.js index.js
 	@$(MAKE) build
+	@mv bak.js index.js
 
 coverage: prepare-coverage
 	@mocha-browser test/index.html -R html-cov > coverage.html
-	@mv bak.js index.js
 
 .PHONY: clean gh-pages build components
