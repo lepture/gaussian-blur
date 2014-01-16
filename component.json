@@ -3,7 +3,10 @@
   "repo": "lepture/gaussian-blur",
   "description": "Gaussian blur effect for images.",
   "version": "0.1.0",
-  "keywords": [],
+  "keywords": [
+    "image",
+    "svg"
+  ],
   "dependencies": {},
   "development": {
     "visionmedia/mocha": "*"
