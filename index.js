@@ -8,7 +8,9 @@
 
 // Sepcial Thanks to https://github.com/finom/jQuery-Gaussian-Blur
 
-var insane = /\bMSIE [678]\.0\b/.test(navigator.userAgent);
+var ua = navigator.userAgent;
+var isIE = /\bMSIE [678]\.0\b/.test(ua);
+var isWebkit = /\bAppleWebKit\b/.test(ua);
 
 var ns = 'http://www.w3.org/2000/svg';
 
@@ -36,11 +38,18 @@ function create(name, attrs) {
  */
 module.exports = function(img, deviation) {
   deviation = deviation || 2;
-  if (insane) {
+  if (isIE || isWebkit) {
     // wow, insane IE is awesome
-    var func = function(num) {
-      img.style.filter = 'progid:DXImageTransform.Microsoft.Blur(pixelradius=' + num*2 + ')';
-    };
+    var func;
+    if (isIE) {
+      func = function(num) {
+        img.style.filter = 'progid:DXImageTransform.Microsoft.Blur(pixelradius=' + num*2 + ')';
+      };
+    } else {
+      func = function(num) {
+        img.style.webkitFilter = 'blur(' + num + 'px)';
+      };
+    }
     func(deviation);
     img.svg = false;
     img.deviation = func;
