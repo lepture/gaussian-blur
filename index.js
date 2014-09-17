@@ -35,6 +35,7 @@ function create(name, attrs) {
  * Interface for developer.
  */
 module.exports = function(img, deviation) {
+  deviation = deviation || 2;
   if (insane) {
     // wow, insane IE is awesome
     var func = function(num) {
@@ -57,7 +58,7 @@ module.exports = function(img, deviation) {
   var filter = create('filter', {id: 'svg-filter-' + blurId});
   var gaussian = create('feGaussianBlur', {
     'in': 'SourceGraphic',
-    stdDeviation: deviation || 2
+    stdDeviation: deviation
   });
   var image = create('image', {
     x: 0,
