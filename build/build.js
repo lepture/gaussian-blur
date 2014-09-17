@@ -211,7 +211,8 @@ require.register("gaussian-blur/index.js", function(exports, require, module){
 // Sepcial Thanks to https://github.com/finom/jQuery-Gaussian-Blur
 
 var ua = navigator.userAgent;
-var insane = ~ua.indexOf('MSIE 6') || ~ua.indexOf('MSIE 7') || ~ua.indexOf('MSIE 8');
+var isIE = /\bMSIE [678]\.0\b/.test(ua);
+var isWebkit = /\bAppleWebKit\b/.test(ua);
 
 var ns = 'http://www.w3.org/2000/svg';
 
@@ -238,11 +239,19 @@ function create(name, attrs) {
  * Interface for developer.
  */
 module.exports = function(img, deviation) {
-  if (insane) {
+  deviation = deviation || 2;
+  if (isIE || isWebkit) {
     // wow, insane IE is awesome
-    var func = function(num) {
-      img.style.filter = 'progid:DXImageTransform.Microsoft.Blur(pixelradius=' + num*2 + ')';
-    };
+    var func;
+    if (isIE) {
+      func = function(num) {
+        img.style.filter = 'progid:DXImageTransform.Microsoft.Blur(pixelradius=' + num*2 + ')';
+      };
+    } else {
+      func = function(num) {
+        img.style.webkitFilter = 'blur(' + num + 'px)';
+      };
+    }
     func(deviation);
     img.svg = false;
     img.deviation = func;
@@ -260,7 +269,7 @@ module.exports = function(img, deviation) {
   var filter = create('filter', {id: 'svg-filter-' + blurId});
   var gaussian = create('feGaussianBlur', {
     'in': 'SourceGraphic',
-    stdDeviation: deviation || 2
+    stdDeviation: deviation
   });
   var image = create('image', {
     x: 0,
